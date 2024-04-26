@@ -26,8 +26,6 @@
    #+end_src
    
 5. 输出结果是什么？\\
-   a.Baa Baa Black Sheep.Have you any wool? b.Begone!
-   c.What d.
    #+begin_src C
      a.Baa Baa Black Sheep.Have you any wool?
      b.Begone!
@@ -37,5 +35,25 @@
      d.2 + 2 = 4
    #+end_src
 
-6. 哪些是C语言的关键字？
+6. 哪些是C语言的关键字？\\
    int、char
+
+7. 如何输出下面这段话？\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main(){
+       int a = 3020;
+       int b = 350;
+
+       printf("There were %d words and %d line.\n",a,b);
+
+       return 0;
+     }
+   #+end_src
+
+8. 程序的状态分别是什么？\\
+   b赋值2、b赋值5、a赋值6
+
+9. 程序的状态分别是什么？\\
+   y赋值5、y赋值15、x赋值150
