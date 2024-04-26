@@ -24,11 +24,18 @@
        return 0;
      }
    #+end_src
-
-   #+RESULTS:
-   : There are 56 weeks in a year.
    
 5. 输出结果是什么？\\
    a.Baa Baa Black Sheep.Have you any wool? b.Begone!
    c.What d.
-   
+   #+begin_src C
+     a.Baa Baa Black Sheep.Have you any wool?
+     b.Begone!
+       o creature of lard!
+     c.What?
+       No/nfish?
+     d.2 + 2 = 4
+   #+end_src
+
+6. 哪些是C语言的关键字？
+   int、char
