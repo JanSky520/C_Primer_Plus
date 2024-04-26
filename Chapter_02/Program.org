@@ -1,0 +1,16 @@
+* 编程练习
+
+1. 定义程序目标和设计程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main(){
+       printf("Gustav Mahler\n");
+       printf("Gustav\nMahler");
+       printf("Gustav ");
+       printf("Mahler\n");
+
+       return 0;
+     }
+   #+end_src
+   
