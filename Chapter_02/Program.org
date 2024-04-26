@@ -6,11 +6,129 @@
 
      int main(){
        printf("Gustav Mahler\n");
-       printf("Gustav\nMahler");
+       printf("Gustav\nMahler\n");
        printf("Gustav ");
        printf("Mahler\n");
 
        return 0;
      }
    #+end_src
-   
+
+2. 打印你的姓名和地址。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main(){
+       printf("JanSky\n");
+       printf("地球村m60号\n");
+
+       return 0;
+     }
+   #+end_src
+
+3. 转换年龄。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main(){
+       int year;
+       scanf("%d",&year);
+       printf("%d\n",year*365);
+
+       return 0;
+     }
+   #+end_src
+
+4. 打印以下输出。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     void jolly(){
+       printf("For he's a jolly good fellow!\n");
+       printf("For he's a jolly good fellow!\n");
+       printf("For he's a jolly good fellow!\n");
+     }
+
+     void deny(){ printf("Which nobody can deny!\n"); }
+
+     int main(){
+       jolly();
+       deny();
+
+       return 0;
+     }
+   #+end_src
+
+5. 打印以下输出。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     void br(){ printf("Brazil,Russia"); }
+
+     void ic(){ printf("India,China"); }
+
+     int main(){
+       br();
+       printf(", ");
+       ic();
+       printf("\n");
+       ic();
+       printf("\n");
+       br();
+
+       return 0;
+     }
+   #+end_src
+
+6. 设计程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main(){
+       int toes = 10;
+       printf("%d\n",toes);
+       printf("%d\n",toes*2);
+       printf("%d\n",toes*toes);
+
+       return 0;
+     }
+   #+end_src
+
+7. 打印以下格式的输出。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     void t1(){ printf("Smile!"); }
+
+     int main(){
+       t1(),t1(),t1();
+       printf("\n");
+       t1(),t1();
+       printf("\n");
+       t1();
+       printf("\n");
+
+       return 0;
+     }
+   #+end_src
+
+8. 打印以下输出。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     void two(){ printf("two\n"); }
+
+     void one_three(){
+       printf("one\n");
+       two();
+       printf("three\n");
+     }
+
+     int main(){
+       printf("starting now:\n");
+       one_three();
+       printf("done!\n");
+
+       return 0;
+     }
+   #+end_src
