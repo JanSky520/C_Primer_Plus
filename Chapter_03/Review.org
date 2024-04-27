@@ -1,0 +1,59 @@
+* 复习题
+
+
+1. C语言的基本模块是什么？\\
+   C语言的基本模块是函数。
+
+2. 什么是语法错误？\\
+   语句不符合C语言的语法规范引起的错误。
+
+3. 什么是语义错误？\\
+   在功能和逻辑含义的表达上存在错误，引起的功能或者结果出现错误。
+
+4. 修改下面的C语言？\\
+   正确如下：
+   #+begin_src C
+     #include <stdio.h>
+
+     int main(){
+       int s;
+
+       s = 56;
+       printf("There are %d weeks in a year.\n",s);
+
+       return 0;
+     }
+   #+end_src
+   
+5. 输出结果是什么？\\
+   #+begin_src C
+     a.Baa Baa Black Sheep.Have you any wool?
+     b.Begone!
+       o creature of lard!
+     c.What?
+       No/nfish?
+     d.2 + 2 = 4
+   #+end_src
+
+6. 哪些是C语言的关键字？\\
+   int、char
+
+7. 如何输出下面这段话？\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main(){
+       int a = 3020;
+       int b = 350;
+
+       printf("There were %d words and %d line.\n",a,b);
+
+       return 0;
+     }
+   #+end_src
+
+8. 程序的状态分别是什么？\\
+   b赋值2、b赋值5、a赋值6
+
+9. 程序的状态分别是什么？\\
+   y赋值5、y赋值15、x赋值150
