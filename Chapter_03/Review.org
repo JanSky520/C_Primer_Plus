@@ -1,59 +1,83 @@
 * 复习题
 
 
-1. C语言的基本模块是什么？\\
-   C语言的基本模块是函数。
+1. 指出下面各种数据使用合适的数据类型。\\
+   a.int b.float c.char d.int
 
-2. 什么是语法错误？\\
-   语句不符合C语言的语法规范引起的错误。
+2. 什么情况下使用long类型代替int类型？\\
+   要储存较大整数的情况下使用long类型。
 
-3. 什么是语义错误？\\
-   在功能和逻辑含义的表达上存在错误，引起的功能或者结果出现错误。
+3. 使用哪些可移植的数据类型可以获得32位有符号整数？\\
+   使用int32_t作为标准32位整型数据，int_least32_t获得至少32位整型数据，int_fast32_t获得32整型数据的最快计算速度。
 
-4. 修改下面的C语言？\\
-   正确如下：
+4. 指出下列常量的类型和含义\\
+   a.字符常量。表示退格 b.int型数据常量 c.双精度浮点型数据常量 d.16进制无符号整型数据 e.双精度浮点型数据常量
+   
+5. 找出程序中的错误？\\
    #+begin_src C
      #include <stdio.h>
 
      int main(){
-       int s;
+       float g, h;
+       float tax, rate;
 
-       s = 56;
-       printf("There are %d weeks in a year.\n",s);
+       g = 1e21;
+       tax = rate * g;
 
        return 0;
      }
    #+end_src
    
-5. 输出结果是什么？\\
-   #+begin_src C
-     a.Baa Baa Black Sheep.Have you any wool?
-     b.Begone!
-       o creature of lard!
-     c.What?
-       No/nfish?
-     d.2 + 2 = 4
-   #+end_src
-
-6. 哪些是C语言的关键字？\\
-   int、char
+6. 写出对应的转换说明。\\
+   |-----------+--------------+-----|
+   | 12        | int          | %d  |
+   | 0x3       | unsigned int | %#x |
+   | 'c'       | char         | %c  |
+   | 2.34e07   | double       | %e  |
+   | '\040'    | char         | %c  |
+   | 7.0       | double       | %lf |
+   | 6l        | long         | %ld |
+   | 6.0f      | float        | %f  |
+   | 0x5.b6p12 | float        | %a  |
+   |-----------+--------------+-----|
 
 7. 如何输出下面这段话？\\
+   |---------+--------------+-----|
+   |     012 | unsigned int | %#o |
+   | 2.9e05L | long double  | %le |
+   |     's' | char         | %c  |
+   |  100000 | long         | %ld |
+   |    '\n' | char         | %c  |
+   |   20.0f | float        | %f  |
+   |    0x44 | unsigned int | %#x |
+   |     -40 | int          | %d  |
+   |---------+--------------+-----|
+
+8. 把下面语句中的转换字符补充完整。\\
    #+begin_src C
-     #include <stdio.h>
-
-     int main(){
-       int a = 3020;
-       int b = 350;
-
-       printf("There were %d words and %d line.\n",a,b);
-
-       return 0;
-     }
+     printf("The code against the %d were %ld to 1.\n",imate,shot);
+     printf("A score of %f is not an %c grade.\n",log,grade);
    #+end_src
 
-8. 程序的状态分别是什么？\\
-   b赋值2、b赋值5、a赋值6
+9. 把回车字符赋给ch。\\
+   #+begin_src C
+     char ch = '\r';
+     char ch = 13;
+     char ch = '\015';
+     char ch = '\xd';
+   #+end_src
 
-9. 程序的状态分别是什么？\\
-   y赋值5、y赋值15、x赋值150
+10. 修正下面程序。\\
+    #+begin_src C
+      void main()  //this program is perfect
+      {
+        int cow, legs, integer;
+        printf("How many cow legs did you count?\n");
+        scanf("%d",legs);
+        cows = legs / 4;
+        printf("That implies there are %d cows.\n".cows);
+      }
+   #+end_src
+
+11. 指出下列转义序列的含义。
+    a.换行 b.\ c.双引号 d.水平制表符

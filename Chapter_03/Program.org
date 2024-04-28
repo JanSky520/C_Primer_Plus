@@ -1,7 +1,25 @@
 * 编程练习
 
 1. 通过实验观察情况。\\
-   
+   #+begin_src C
+     #include <stdio.h>
+     #include <float.h>
+     #include <limits.h>
+
+     int main(){
+       int big_int = 2147483647;
+       float big_float = 3.4e38;
+       float small_float = 10.0/3;
+
+       printf("%d\n",big_int+1);
+       printf("%f\n",big_float*10);
+       printf("%f\n",small_float);
+       printf("%f\n",FLT_MAX);
+       printf("%ld\n",INT_MAX);
+
+       return 0;
+     }
+   #+end_src
 
 2. 打印输入的字符。\\
    #+begin_src C
@@ -29,95 +47,73 @@
      }
    #+end_src
 
-4. 打印以下输出。\\
+4. 打印输入的浮点数。\\
    #+begin_src C
      #include <stdio.h>
 
-     void jolly(){
-       printf("For he's a jolly good fellow!\n");
-       printf("For he's a jolly good fellow!\n");
-       printf("For he's a jolly good fellow!\n");
-     }
-
-     void deny(){ printf("Which nobody can deny!\n"); }
-
      int main(){
-       jolly();
-       deny();
+       float num;
+       printf("Enter a floating-point value:");
+       scanf("%f",&num);
+       printf("\nfixed-point notation:%f\n",num);
+       printf("exponential notation:%e\n",num);
+       printf("p notation:%a\n",num);
 
        return 0;
      }
    #+end_src
 
-5. 打印以下输出。\\
+5. 打印输入年龄对应的秒数。\\
    #+begin_src C
      #include <stdio.h>
 
-     void br(){ printf("Brazil,Russia"); }
-
-     void ic(){ printf("India,China"); }
-
      int main(){
-       br();
-       printf(", ");
-       ic();
-       printf("\n");
-       ic();
-       printf("\n");
-       br();
+       double year;
+       scanf("%lf",&year);
+       printf("%lf\n",year*3.156e7);
 
        return 0;
      }
    #+end_src
 
-6. 设计程序。\\
+6. 显示水分子的数量。\\
    #+begin_src C
      #include <stdio.h>
 
      int main(){
-       int toes = 10;
-       printf("%d\n",toes);
-       printf("%d\n",toes*2);
-       printf("%d\n",toes*toes);
+       double water;
+       scanf("%lf",&water);
+       printf("%lf\n",water*950/3,0e-23);
 
        return 0;
      }
    #+end_src
 
-7. 打印以下格式的输出。\\
+7. 以厘米为单位显示身高。\\
    #+begin_src C
      #include <stdio.h>
 
-     void t1(){ printf("Smile!"); }
-
      int main(){
-       t1(),t1(),t1();
-       printf("\n");
-       t1(),t1();
-       printf("\n");
-       t1();
-       printf("\n");
+       float high;
+       scanf("%f",&high);
+       printf("%fcm\n",high*2.54);
 
        return 0;
      }
    #+end_src
 
-8. 打印以下输出。\\
+8. 为何使用浮点类型比整数类型更合适。\\
+   在换算过程中有可能会出现小数。
    #+begin_src C
      #include <stdio.h>
 
-     void two(){ printf("two\n"); }
-
-     void one_three(){
-       printf("one\n");
-       two();
-       printf("three\n");
-     }
-
      int main(){
-       printf("starting now:\n");
-       one_three();
-       printf("done!\n");
+       float cup;
+       scanf("%f",&cup)
+       printf("pint:%f\n",cup/2);
+       printf("ounce:%f\n",cup*8);
+       printf("spoon:%f\n",cup*8*2);
+       printf("tea:%f\n",cup*8*2*3);
 
        return 0;
      }
