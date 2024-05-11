@@ -1,0 +1,90 @@
+* 复习题
+
+
+1. 再次运行程序清单4.1会发生什么。\\
+   scanf函数遇见空格会自动当作输入已完成，把后续字符串留在缓冲区中当作下次输入。
+   
+2. 打印的结果分别是什么？\\
+   #+begin_src C
+     a.He sold the painting for $234.50.
+     b.Hi!
+     c.His Hamlet was funny without being vulgar.
+       has 42 characters.
+     d.Is 1.20e+03 the same as 1201.00?
+   #+end_src
+   
+3. 第二题中的c如何修改。\\
+   #+begin_src C
+     #define Q "His Hamlet was funny without being vulgar."
+     printf("\"%s\nhas %d characters.\n\"",Q,strelen(Q));
+   #+end_src
+   
+4. 找出下列程序的错误。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     #define B "booboo"
+     #define X 10
+
+     int main(){
+       int age;
+       char name[10];
+       printf("Please enter your first name.");
+       scanf("%s",name);
+       printf("All right, %s, what's your age?\n",name);
+       scanf("%d",&age);
+       xp = age + X;
+       printf("That's a %s! You must be at least %d.\n",B,xp);
+
+       return 0;
+     }
+   #+end_src
+   
+5. 打印以下内容。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     #define BOOK "War and peace"
+
+     int main(){
+       float cost = 12.99;
+       float percent = 80.0;
+       
+       printf("This copy of \"%s\" sells for $%.2f.\n",BOOK,cost);
+       printf("That is %d%% of list.\n",(int)percent);
+
+       return 0;
+     }
+   #+end_src
+   
+6. 打印下列各项内容要分别使用什么转换说明。\\
+   a.%d b.%4x c.%10.3f d.%12.2e e.%-30s
+   
+7. 打印下列各项内容要分别使用什么转换说明。\\
+   a.%15lu b.%#4x c.%-12.2E d.%+10.3f e.%8.8s
+   
+8. 打印下列各项内容要分别使用什么转换说明。\\
+   a.%6.4d b.%*8 c.%2c d.%+.2f e.%-7.5s
+   
+9. 分别写出下列各输入行的scanf()语句。\\
+   #+begin_src C
+     int a;
+     double b1, b2;
+     char c[10];
+
+     scanf("%d",&a);
+     scanf("%lf %lf",&b1,&b2);
+     scanf("%s",c);
+     scanf("%*s %d",&a);
+   #+end_src
+   
+10. 什么是空白。\\
+    空白是指空格、制表符、换行符，这3种空白是scanf()函数进行输入分割的符号。
+    
+11. 修正下列语句。\\
+    #+begin_src C
+      printf("The double type is %zd bytes..\n",sizeof(double));
+    #+end_src
+    
+12. 圆括号代替花括号以下方法可行？\\
+    替换后会导致语法错误。
