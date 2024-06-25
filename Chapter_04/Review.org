@@ -26,6 +26,7 @@
      #define B "booboo"
      #define X 10
 
+     
      int main(){
        int age;
        char name[10];

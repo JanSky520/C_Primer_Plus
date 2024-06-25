@@ -1,0 +1,145 @@
+* 复习题
+
+
+1. 写出执行下列执行quack的值。\\
+   #+begin_src C
+     int quack = 2;
+     quack += 5;    // 7
+     quack *= 10;   // 70
+     quack -= 6;    // 64
+     quack /= 8;    // 8
+     quack %= 3;    // 2
+   #+end_src
+
+2. 下面循环输出是什么，如果是double类型呢。\\
+   int: 36 18  9  4  2  1    double: %d无法打印double类型
+
+3. 用代码表示下列测试条件。\\
+   #+begin_src C
+     x>5;
+     scanf("%lf",&x);
+     x==5;
+   #+end_src
+   
+4. 用代码表示下列测试条件。\\
+   #+begin_src C
+     scanf("%d",&x);
+     x!=5;
+     x>=20;
+   #+end_src
+
+5. 找出下列程序问题。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main(void) {
+       int i, j, list[10];
+
+       for(i=0;i<10;i++) {
+         list[i] = 2 * i + 3;
+         for(j=0;j<=i;j++)
+            printf(" %d",list[j]);
+         printf("\n");
+       }
+
+       return 0;
+     }
+   #+end_src
+   
+6. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main(void) {
+       char ch = '$';
+
+       for(int i=0;i<4;i++) {
+         for(int j=0;j<8;j++)
+            printf("%c",ch);
+         printf("\n");
+       }
+
+       return 0;
+     }
+   #+end_src
+
+7. 下面的程序将打印出什么内容？\\
+   #+begin_src sh
+     Hi! Hi! Hi! Bye! Bye! Bye! Bye! Bye!
+     
+     ACGM
+   #+end_src
+
+8. 下面的程序将打印出什么内容？\\
+   #+begin_src sh
+     Go west. youn
+     Hp!xftu-!zpvo
+     Go west, young
+     $o west, youn
+   #+end_src
+
+9. 下列程序打印什么。\\
+   #+begin_src sh
+     31|32|33|30|31|32|33|
+     ***
+     1
+     5
+     9
+     13
+     ***
+     2 6
+     4 8
+     8 10
+     ***
+     ======
+     =====
+     ====
+     ===
+     ==
+   #+end_src
+
+10. 考虑下面的声明。\\
+    a.mint b.10 c.double d.ii
+
+11. 改正程序。\\
+    #+begin_src C
+      #include <stdio.h>
+
+      #define SIZE 8
+
+      int main() {
+        int by_twos[SIZE];
+        int index;
+
+        for(index=0;index<SIZE;index++)
+          by_twos[index] = 2 * index;
+        for(index=0;index<SIZE;index++)
+          printf("%d ",by_twos[index]);
+        printf("\n");
+
+        return 0;
+      }
+    #+end_src
+
+12. 如果要返回一个long类型值的函数，函数定义应包含什么。\\
+    函数的声明必须包含long，return返回值也必须包含long。
+
+13. 定义一个函数。\\
+    #+begin_src C
+      long defun(int x) { return (long)(x * x) }
+    #+end_src
+
+14. 下面的程序打印什么内容。\\
+    #+begin_src sh
+      1: Hi!
+      k = 1
+      k is 1 in the loop
+      Now k is 3
+      k = 3
+      k is 3 in the loop
+      Now k is 5
+      k = 5
+      k is 5 in the loop
+      Now k is 7
+      k = 7
+    #+end_src

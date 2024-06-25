@@ -1,0 +1,369 @@
+* 编成练习
+
+
+1. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       char arr[26], ch = 'a';
+
+       for(int i=0;i<26;i++)
+         arr[i] = ch++;
+
+       for(int i=0;i<26;i++)
+         printf("%c ",arr[i]);
+
+       return 0;
+     }
+   #+end_src
+
+2. 使用嵌套循环，打印下列程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       for(int i=0;i<5;i++) {
+         for(int j=0;j<=i;j++)
+           printf("$");
+         printf("\n");
+     }
+
+       return 0;
+     }
+   #+end_src
+
+3. 使用嵌套循环，打印下列程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       for(int i=0;i<6;i++) {
+         char ch = 'F';
+         for(int j=0;j<=i;j++)
+           printf("%c",ch--);
+         printf("\n");
+     }
+
+       return 0;
+     }
+   #+end_src
+
+
+4. 使用嵌套循环，打印下列程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       char ch = 'A';
+       for(int i=0;i<6;i++) {
+         for(int j=0;j<=i;j++)
+           printf("%c",ch++);
+         printf("\n");
+     }
+
+       return 0;
+     }
+   #+end_src
+
+5. 输入大写字母，嵌套循环打印金字塔。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       char ch, tmp = 'A';
+       scanf("%c",&ch);
+       int num = ch - tmp + 1;
+       int count = num;
+
+       for(int i=0;i<num;i++) {
+         for(int k=0;k<count-1;k++)
+           printf(" ");
+         count--;
+
+         for(int j=0;j<=i;j++)
+           printf("%c",tmp++);
+         tmp = tmp - 2;
+         
+         for(int j=0;j<i;j++)
+           printf("%c",tmp--);
+         printf("\n");
+         tmp = 'A';
+       }
+
+       return 0;
+     }
+   #+end_src
+
+6. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       int num, i;
+
+       for(i=scanf("%d",&num);i==1;i=scanf("%d",&num))
+         printf("%d %d %d\n",num,num*num,num*num*num);
+
+       return 0;
+     }
+   #+end_src
+
+7. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+     #include <string.h>
+
+     int main() {
+       char word[10];
+       scanf("%s",word);
+       int len = strlen(word);
+
+       for(int i=len-1;i>=0;i--)
+         printf("%c",word[i]);
+       printf("\n");
+
+       return 0;
+     }
+   #+end_src
+
+8. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       double x, y;
+
+       while(scanf("%lf %lf",&x,&y)==2) {
+         if(x*y==0.0)
+           break;
+         printf("%lf\n",(x-y)/(x*y));
+       }
+
+       return 0;
+     }
+   #+end_src
+
+9. 修改程序8。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     double sub(double x, double y) { return (x-y)/(x*y); }
+
+     int main() {
+       double x, y;
+
+       while(scanf("%lf %lf",&x,&y)==2) {
+         if(x*y==0.0)
+           break;
+         printf("%lf\n",sub(x,y));
+       }
+
+       return 0;
+     }
+   #+end_src
+
+10. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       int max, min, sum;
+
+       printf("Enter lower and upper integer limits:");
+       while(scanf("%d %d",&min,&max)==2) {
+         if(max<=min)
+           break;
+
+         for(int i=min;i<=max;i++)
+           sum = sum + i * i;
+         printf("The sums of the squares from %d to %d is %d\n",min*min,max*max,sum);
+         printf("Enter next set of limits:");
+       }
+       printf("Done\n");
+
+       return 0;
+     }
+   #+end_src
+
+11. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       int arr[8];
+
+       for(int i=0;i<8;i++)
+         scanf("%d",&arr[i]);
+       for(int i=7;i>=0;i--)
+         printf("%d ",arr[i]);
+       printf("\n");
+
+       return 0;
+     }
+   #+end_src
+
+12. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       double sum, num = 1.0;
+       int loop;
+       scanf("%d",&loop);
+
+       while(loop>0) {
+         for(int i=0;i<loop;i++) {
+           if((i+1)%2!=0)
+             sum = sum + 2 * num / (num + i);
+         }
+         printf("%lf\n",sum);
+         sum = 0;
+         scanf("%d",&loop);
+       }
+       
+       return 0;
+     }
+   #+end_src
+
+13. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+      int my_pow(int x, int y) {
+        for(int i=0;i<y;i++)
+          x = x * 2;
+
+        return x;
+      }
+
+     int main() {
+       int i, arr[8];
+
+       for(i=0;i<8;i++)
+         arr[i] = my_pow(2,i);
+       
+       i=0;
+       do {
+         printf("%d ",arr[i]);
+         } while(++i<8);
+
+       printf("\n");
+       
+       return 0;
+     }
+   #+end_src
+
+14. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       double arr1[8], arr2[8], sum = 0;
+
+       for(int i=0;i<8;i++)
+         scanf("%lf",&arr1[i]);
+
+       for(int i=0;i<8;i++) {
+         sum = sum + arr1[i];
+         arr2[i] = sum;
+       }
+       
+       for(int i=0;i<8;i++)
+         printf("%lf ",arr1[i]);
+       printf("\n");
+
+       for(int i=0;i<8;i++)
+         printf("%lf ",arr2[i]);
+       printf("\n");
+       
+       return 0;
+     }
+   #+end_src
+
+15. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       char arr[255];
+       int i = 0;
+
+       do {
+         scanf("%c",&arr[i]);
+       } while(arr[i]!='\n' && ++i);
+
+       for(i--;i>=0;i--)
+         printf("%c",arr[i]);
+       printf("\n");
+
+       return 0;
+     }
+   #+end_src
+
+16. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       double Daphne = 100;
+       double Deirdre = 100;
+       int year = 0;
+
+       while(1) {
+         Daphne = Daphne + 10;
+         Deirdre = Deirdre + Deirdre * 0.05;
+         year++;
+
+         if(Deirdre>Daphne)
+           break;
+       }
+
+       printf("Daphine:%lf Deirdre:%lf year:%d\n",Daphne,Deirdre,year);
+
+       return 0;
+     }
+   #+end_src
+
+17. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       double CL = 100;
+       int year = 0;
+
+       while(1) {
+         CL = CL + CL * 0.08;
+         CL = CL - 10;
+         year++;
+
+         if(CL<=0)
+           break;
+       }
+
+       printf("year:%d\n",year);
+
+       return 0;
+     }
+   #+end_src
+
+18. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       int friend = 5;
+       int week = 0;
+
+       while(++week) {
+         friend = (friend - week) * 2;
+         printf("friend:%d week:%d\n",friend,week);
+
+         if(friend>150)
+           break;
+       }
+
+       return 0;
+     }
+   #+end_src
