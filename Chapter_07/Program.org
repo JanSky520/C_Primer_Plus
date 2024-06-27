@@ -6,15 +6,21 @@
      #include <stdio.h>
 
      int main() {
-       const int tmp = 60;
-       int min = 0;
-       int huor = 0;
+       char ch;
+       int kg = 0;
+       int hh = 0;
+       int other = 0;
 
-       while(scanf("%d",&min)>0) {
-         huor = min / tmp;
-         min = min % tmp;
-         printf("%d小时%d分钟\n",huor,min);
+       while((ch=getchar())!='#') {
+         if(ch==' ')
+           kg++;
+         else if(ch=='\n')
+           hh++;
+         else
+           other++;
        }
+
+       printf("%d %d %d\n",kg,hh,other);
 
        return 0;
      }
@@ -25,14 +31,15 @@
      #include <stdio.h>
 
      int main() {
-       int num;
-       int i = 10;
-       scanf("%d",&num);
+       char ch;
+       int tmp = 0;
 
-       while(i--)
-         printf("%d ",num++);
-
-       printf("%d\n",num);
+       while((ch=getchar())!='#') {
+         printf("%c-%d ",ch,ch);
+         tmp++;
+         if(tmp%8==0)
+           printf("\n");
+       }
 
        return 0;
      }
@@ -43,10 +50,24 @@
      #include <stdio.h>
 
      int main() {
-       int day = 0;
+       int num, sum1 = 0;
+       int i = 0;
+       int j = 0;
+       int sum2 = 0;
 
-       while(scanf("%d",&day)>0)
-         printf("%d days are %d weeks, %d days\n",day,day/7,day%7);
+       while(scanf("%d",&num)==1 && num!=0) {
+         if(num%2==0) {
+           sum1 = sum1 + num;
+           i++;
+         }
+         else {
+           sum2 = sum2 + num;
+           j++;
+         }
+       }
+
+       printf("%d %d\n",i,sum1);
+       printf("%d %d\n",j,sum2);
 
        return 0;
      }
@@ -57,58 +78,76 @@
      #include <stdio.h>
 
      int main() {
-       int feet;
-       float inch, high;
+       char ch;
+       int count = 0;
 
-       printf("Enter a height in centimeters:");
-       while(scanf("%f",&high)>0) {
-         feet = high / 30.48;
-         inch = (high - feet * 30.48) / 2.54;
-         printf("\n%.1f cm = %d feet, %.1f inches\n",high,feet,inch);
-         printf("Enter a height in centimeters:");
+       while((ch=getchar())!='#') {
+         if(ch=='.') {
+           putchar('!');
+           count++;
+         }
+         else if(ch=='!') {
+           putchar('!');
+           putchar('!');
+           count++;
+         }
+         else
+           putchar(ch);
        }
 
-       printf("%d\n",num);
+       printf("\ncount = %d\n",count);
 
        return 0;
      }
    #+end_src
 
-5. 修改程序。\\
+5. 用switch重写练习4。\\
    #+begin_src C
      #include <stdio.h>
 
      int main() {
-       int count = 0, sum = 0;
-       printf("Enter the number of days you work:");
-       scanf("%d",&count);
+       char ch;
+       int count = 0;
 
-       while(count>0)
-         sum = sum + count--;
+       while((ch=getchar())!='#') {
+         switch(ch) {
+           case '.':
+             putchar('!');
+             count++;
+             break;
 
-       printf("You earned $ %d total!\n",sum);
-       printf("PROGRAM EXIT!\n");
+           case '!':
+             putchar('!');
+             putchar('!');
+             count++;
+             break;
+
+           default:
+             putchar(ch);
+         }
+       }
+
+       printf("\ncount = %d\n",count);
 
        return 0;
      }
    #+end_src
 
-6. 修改编程练习5。\\
+6. 编写程序。\\
    #+begin_src C
      #include <stdio.h>
 
      int main() {
-       int count = 0, sum = 0;
-       printf("Enter the number of days you work:");
-       scanf("%d",&count);
+       char ch;
+       int count = 0;
 
-       while(count>0) {
-         sum = sum + count * count;
-         count--;
+       while((ch=getchar())!='#') {
+         if(ch=='e')
+           if((ch=getchar())=='i')
+             count++;
        }
 
-       printf("You earned $ %d total!\n",sum);
-       printf("PROGRAM EXIT!\n");
+       printf("\ncount = %d\n",count);
 
        return 0;
      }
@@ -118,43 +157,101 @@
    #+begin_src C
      #include <stdio.h>
 
-     double cubic(double num) { return num * num * num; }
+     #define BASE_WAGE 10.00
+     #define EXTRA_HOUR 1.5
+     #define BASE_TAX 0.15
+     #define EXTRA_TAX 0.2
+     #define LAST_TAX 0.25
 
      int main() {
-       double num;
+       double hour, total, tax;
 
-       scanf("%lf",&num);
-       printf("%lf\n",cubic(num));
+       while(scanf("%lf",&hour)==1) {
+         if(hour<=40)
+           total = hour * BASE_WAGE;
+         else
+           total = ((hour - 40) * EXTRA_HOUR + 40) * BASE_WAGE;
+
+         if(total<300)
+           tax = total * BASE_TAX;
+         else if(total>300 && total<=450)
+           tax = (total - 300) * EXTRA_TAX + 300 * BASE_TAX;
+         else
+           tax = 300 * BASE_TAX + 150 * EXTRA_TAX + (total - 450) * LAST_TAX;
+
+         printf("%lf %lf %lf\n",total,tax,total-tax);
+       }
 
        return 0;
      }
    #+end_src
 
-8. 编写程序。\\
+8. 修改联系7。\\
    #+begin_src C
      #include <stdio.h>
 
+     #define EXTRA_HOUR 1.5
+     #define BASE_TAX 0.15
+     #define EXTRA_TAX 0.2
+     #define LAST_TAX 0.25
+
+     int menu() {
+       int num;
+
+       printf("*****************************************************************\n");
+       printf("Enter the number corresponding to the desired pay rate or action:\n");
+       printf("1) $8.75/hr                                     2) $9.33/hr\n");
+       printf("3) $10.00/hr                                    4) $11.20/hr\n");
+       printf("5) quit\n");
+       printf("*****************************************************************\n");
+       scanf("%d",&num);
+        
+       return num; 
+     }
+
      int main() {
-       int first, second;
-       printf("This program computes moduli\n");
-       printf("Enter an integer to server as the second sperand:");
-       scanf("%d",&second);
+       double hour, total, tax, wage;
+       int num;
 
-       printf("Now enter the first operand:");
-       scanf("%d",&first);
+       while((num=menu())!=5) {
+         printf("hour:");
+         scanf("%lf",&hour);
+         
+         switch(num) {
+           case 1:
+             wage = 8.75;
+             break;
 
-       printf("%d %% %d is %d\n",first,second,first%second);
+           case 2:
+             wage = 9.33;
+             break;
 
-       printf("Now enter the first operand (<= 0 to quit):");
-       while(1) {
-         scanf("%d",&first);
-         if(first<=0)
-           break;
-         printf("%d %% %d is %d\n",first,second,first%second);
-         printf("Now enter the first operand (<= 0 to quit):");
+           case 3:
+             wage = 10.00;
+             break;
+
+           case 4:
+             wage = 11.20;
+             break;
+
+           default:
+             break;
+         }
+         
+         if(hour<=40)
+           total = hour * wage;
+         else
+           total = ((hour - 40) * EXTRA_HOUR + 40) * wage;
+
+         if(total<300)
+           tax = total * BASE_TAX;
+         else if(total>300 && total<=450)
+           tax = (total - 300) * EXTRA_TAX + 300 * BASE_TAX;
+         else
+           tax = 300 * BASE_TAX + 150 * EXTRA_TAX + (total - 450) * LAST_TAX;
+
+         printf("%lf %lf %lf\n\n",total,tax,total-tax);
        }
-
-       printf("Done\n");
 
        return 0;
      }
@@ -164,23 +261,165 @@
    #+begin_src C
      #include <stdio.h>
 
-     void Temperatures(double huashi) {
-       const double tmp = 273.16;
-       double sheshi, kaishi;
-       sheshi = 5.0 / 9.0 * (huashi - 32.0);
-       kaishi = sheshi + tmp;
+     int main() {
+       int num;
 
-       printf("华氏度：%.2f 摄氏度：%.2f 开始度：%.2f\n",huashi,sheshi,kaishi);
+       while(scanf("%d",&num)==1 && num>1) {
+         for(int i=2;i<=num;i++) {
+           int flag = 1;
+           for(int j=2;j<i;j++) {
+             if(i%j==0)
+               flag = 0;
+           }
+
+           if(flag)
+             printf("%d ",i);
+         }
+
+         printf("\n");
+       }
+
+       return 0;
+     }
+   #+end_src
+
+10. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       int num;
+       double wage;
+
+       while(1) {
+         printf("Please input wage:");
+         scanf("%lf",&wage);
+
+         printf("1.单身 2.户主 3.已婚（共有） 4.已婚（离异）\n");
+         scanf("%d",&num);
+         switch(num) {
+           case 1:
+             if(wage<=17850)
+               printf("tax=%lf\n",wage*0.15);
+             else
+               printf("tax=%lf\n",17850*0.15+(wage-17850)*0.28);
+             break;
+
+           case 2:
+             if(wage<=23900)
+               printf("tax=%lf\n",wage*0.15);
+             else
+               printf("tax=%lf\n",23900*0.15+(wage-23900)*0.28);
+             break;
+
+           case 3:
+             if(wage<=29750)
+               printf("tax=%lf\n",wage*0.15);
+             else
+               printf("tax=%lf\n",29750*0.15+(wage-29750)*0.28);
+             break;
+
+           case 4:
+             if(wage<=14850)
+               printf("tax=%lf\n",wage*0.15);
+             else
+               printf("tax=%lf\n",14850*0.15+(wage-14850)*0.28);
+             break;
+
+           default:
+             break;
+         }
+       }
+
+       return 0;
+     }
+   #+end_src
+
+11. 编写程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     double cal(double weight, double price) {
+       double vg_total = 0;
+       double total = 0;
+       double discount = 0;
+       double freight = 0;
+       double sum = 0;
+       vg_total = weight * price;
+
+       if(weight<=5 && weight>0) {
+         freight = 6.5;
+         total = vg_total + freight;
+         sum = total;
+       }
+       else if(weight>5 && weight<=20) {
+         freight = 14;
+         total = vg_total + freight;
+         sum = total;
+       }
+       else if(weight>20){
+         freight = 14 + (weight - 20) * 0.5;
+         total = vg_total + freight;
+         sum = total;
+       }
+
+       if(sum>=100) {
+         discount = sum * 0.05;
+         sum = sum - discount;
+         printf("售价：%.2lf美元 重量：%.2lf磅 蔬菜费：%.2lf美元 总费用：%.2lf 折扣：%.2lf 运费包装费：%.2lf美元\n",price,weight,vg_total,total,discount,freight);
+       }
+       else
+         printf("售价：%.2lf美元 重量：%.2lf磅 蔬菜费：%.2lf美元 总费用：%.2lf 运费包装费：%.2lf美元\n",price,weight,vg_total,total,freight);
+
+       return sum;
      }
 
      int main() {
-       double huashi;
+       char ch;
+       double weight, count = 0;
+       double yj = 0;
+       double tc = 0;
+       double hlb = 0;
+       double yj_sum = 0;
+       double tc_sum = 0;
+       double hlb_sum = 0;
 
-       while(1) {
-         int tmp = scanf("%lf",&huashi);
-         if(tmp!=1)
-           break;
-         Temperatures(huashi);
+       printf("a.洋蓟 b.甜菜 c.胡萝卜 q.退出\n");
+       while((ch=getchar())!='q') {
+         printf("Please input weight:");
+         scanf("%lf",&weight);
+
+         switch(ch) {
+           case 'a':
+             yj = yj + weight;
+             break;
+
+           case 'b':
+             tc = tc + weight;
+             break;
+
+           case 'c':
+             hlb = hlb + weight;
+             break;
+
+           default:
+             break;
+         }
+
+         printf("洋蓟\n");
+         yj_sum = yj_sum + cal(yj,2.05);
+         printf("甜菜\n");
+         tc_sum = tc_sum + cal(tc,1.15);
+         printf("胡萝卜\n");
+         hlb_sum = hlb_sum + cal(hlb,1.09);
+         printf("总费用：%.2lf\n",yj_sum+tc_sum+hlb_sum);
+
+         yj_sum = 0;
+         tc_sum = 0;
+         hlb_sum = 0;
+
+         printf("\na.洋蓟 b.甜菜 c.胡萝卜 q.退出\n");
+         ch = getchar();
        }
 
        return 0;

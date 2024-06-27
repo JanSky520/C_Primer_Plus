@@ -1,138 +1,113 @@
 * 复习题
 
 
-1. 下列各项变量的值是多少。\\
-   a.x=30 b.x=27 c.y=x=1 d.y=9 x=3
+1. 判断下列表达式真值。\\
+   a.false b.true c.false
 
-2. 下列各项变量的值是多少。\\
-   a.x=6 b.x=50 c.x=0 d.x=13
+2. 构造表达式。\\
+   #+begin_src C
+     number>=90 && number<100;
+     ch!='q' || ch!='k';
+     number>=1 && number<=9 && number!=5;
+     number<1 && number>9;
+   #+end_src
 
-3. 对下列表达式求值。\\
-   a.37.5 b.1.5 c.35 d.37 e.37.5 f.35.0
-   
-4. 找出下列程序的错误。\\
+3. 找出下列程序的错误。\\
    #+begin_src C
      #include <stdio.h>
 
      int main(void) {
-       int i = 1;
-       float n;
+       int weight, height;
+       scanf("%d %d",&weight,&height);
 
-       printf("Watch out! Here come a bunch of fractions!\n");
-
-       while(i++<30) {
-         n = 1.0/i;
-         printf("%f",n);
+       if(weight<100 && height>64) {
+         if(height>=72)
+           printf("You are very tall for your weight.\n");
+         else if(height<72 && height>64)
+           printf("You are tall for your weight.\n");
+         else(weight>300 && height<48)
+           printf("You are quite short for your weight.\n");
        }
-
-       printf("That'a all, folks!\n");
+       else
+         printf("Your weight is ideal.\n");
 
        return 0;
      }
    #+end_src
+   
+4. 1. 判断下列表达式真值。\\
+   a.1 b.0 c.1 d.6 e.10 f.0
 
-5. 找出下列程序不如原版之处。\\
-   #+begin_src C
-     #include <stdio.h>
-
-     #define S_TO_M 60
-
-     int main(void) {
-       int sec = 1, min, left;
-
-       printf("This program converts seconds to minutes and ");
-       printf("seconds,\n");
-       printf("Just enter the number of secondes.\n");
-       printf("Enter 0 to end the progrom.\n");
-
-       while(sec>0) {
-         scanf("%d",&sec);
-         min = sec / S_TO_M;
-         left = sec % S_TO_M;
-
-         printf(" %d sec is %d min sec.\n",sec,min,left);
-         printf("Next input");
-       }
-
-       printf("Bye!\n");
-
-       return 0;
-     }
+5. 下列程序打印什么。\\
+   #+begin_src sh
+     *#%*#%$#%*#%*#%$#%*#%*#%$#%*#%*#%
    #+end_src
 
 6. 下面的程序将打印出什么内容？\\
-   #+begin_src C
-     /*
-     %s! C is cool!
-     ! C is cool!
-     */
-
-     //11
-     //11
-     //12
-     //11
+   #+begin_src sh
+     fat hat cat Oh no!
+     hat cat Oh no!
+     cat Oh no!
    #+end_src
 
-7. 下面的程序将打印出什么内容？\\
-   SOS:4 4.00
-
-8. 下面的程序将打印出什么内容？\\
-   每个数字占5个位置，1～10
-
-9. 修改上一个程序。\\
+7. 修改程序。\\
    #+begin_src C
      #include <stdio.h>
 
-     #define TEN 103
-
      int main(int argc, char*  argv[]) {
-       char n = 96;
+       char ch;
+       int lc = 0;
+       int uc = 0;
+       int oc = 0;
 
-       while(n++<TEN) {
-         printf("%5c",n);
-         printf("\n");
+       while((ch=getchar())!='#') {
+         if(ch>='a' && ch<='z')
+           lc++;
+         else if(!(ch<'A'>) && !(ch>'Z'))
+           uc++;
+         else
+           oc++;
        }
+
+       printf("%d lowercase, %d uppercase, %d other.\n",lc,uc,oc);
 
        return 0;
      }
    #+end_src
 
-10. 下面分别打印什么。\\
-    #+begin_src C
-      //1   2
-      /*
-        101
-        102
-        103
-        104
-      ,*/
-      //stuvw
-    #+end_src
+8. 下面的程序将打印出什么内容？\\
+   #+begin_src sh
+     You are 40. Here is a raise.
+     You are 60. Here is a raise.
+     You are 65. Here is your gold watch.
+   #+end_src
 
-11. 下面的程序将打印出什么内容？\\
-    #+begin_src C
-      //1   2
-      /*
-        101
-        102
-        103
-        104
-      ,*/
-      //stuvw
-    #+end_src
+9. 下面的程序将打印出什么内容？\\
+   #+begin_src sh
+     q
+     Setup 1
+     Setup 2
+     Setup 3
+     c
+     Setup 1
+     h
+     Setup 1
+     Setup 3
+     b
+     Setup 1
+     Done
+   #+end_src
 
-12. 编写一条语句。\\
-    #+begin_src C
-      a.x=x+10;
-      b.x++;
-      c.c=(a+b)*2;
-      d.c=a+b*2;
-    #+end_src
-
-13. 编写一条语句。\\
-    #+begin_src C
-      a.x--;
-      b.m=n%k;
-      c.p=q/b-a;
-      d.x=(a+b)/c*d;
-    #+end_src
+10. 重复习题9。\\
+    #+begin_src sh
+     q
+     Setup 1
+     Setup 2
+     Setup 3
+     c
+     h
+     Setup 3
+     b
+     Setup 1
+     Done
+   #+end_src
