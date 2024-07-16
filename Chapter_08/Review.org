@@ -1,138 +1,41 @@
 * 复习题
 
 
-1. 下列各项变量的值是多少。\\
-   a.x=30 b.x=27 c.y=x=1 d.y=9 x=3
+1. putchar(getchar())是一个有效的表达式，功能是什么？getchar(putchar())是否有效。\\
+   putchar(getchar())读取一个输入字符并且回显。getchar(putchar())不是一个有效表达式。
 
 2. 下列各项变量的值是多少。\\
-   a.x=6 b.x=50 c.x=0 d.x=13
+   a.H b.beep c.换行 d.退格
 
-3. 对下列表达式求值。\\
-   a.37.5 b.1.5 c.35 d.37 e.37.5 f.35.0
+3. 设计程序。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     int main() {
+       int ch, count = 0;
+    
+       while((ch=getchar())!=EOF) {
+         putchar(ch);
+         count++;
+       }
+
+       printf("%d\n",count);
+  
+       return 0;        
+     }
+   #+end_src
    
-4. 找出下列程序的错误。\\
-   #+begin_src C
-     #include <stdio.h>
+4. 下面哪个是有效命令。\\
+   a.缺少程序 b.缺少重定向符号 c.程序和文件前后颠倒
 
-     int main(void) {
-       int i = 1;
-       float n;
+5. EOF是什么。\\
+   EOF表示为-1，用以检测输出函数的返回值。
 
-       printf("Watch out! Here come a bunch of fractions!\n");
+6. 下面输出分别是什么？\\
+   a.If you qu b.HJacrthjacrt
 
-       while(i++<30) {
-         n = 1.0/i;
-         printf("%f",n);
-       }
+7. C如何处理不同计算机系统中的不同文件和换行约定。\\
+   C语言应用预定义的标准I/O库的形式。
 
-       printf("That'a all, folks!\n");
-
-       return 0;
-     }
-   #+end_src
-
-5. 找出下列程序不如原版之处。\\
-   #+begin_src C
-     #include <stdio.h>
-
-     #define S_TO_M 60
-
-     int main(void) {
-       int sec = 1, min, left;
-
-       printf("This program converts seconds to minutes and ");
-       printf("seconds,\n");
-       printf("Just enter the number of secondes.\n");
-       printf("Enter 0 to end the progrom.\n");
-
-       while(sec>0) {
-         scanf("%d",&sec);
-         min = sec / S_TO_M;
-         left = sec % S_TO_M;
-
-         printf(" %d sec is %d min sec.\n",sec,min,left);
-         printf("Next input");
-       }
-
-       printf("Bye!\n");
-
-       return 0;
-     }
-   #+end_src
-
-6. 下面的程序将打印出什么内容？\\
-   #+begin_src C
-     /*
-     %s! C is cool!
-     ! C is cool!
-     */
-
-     //11
-     //11
-     //12
-     //11
-   #+end_src
-
-7. 下面的程序将打印出什么内容？\\
-   SOS:4 4.00
-
-8. 下面的程序将打印出什么内容？\\
-   每个数字占5个位置，1～10
-
-9. 修改上一个程序。\\
-   #+begin_src C
-     #include <stdio.h>
-
-     #define TEN 103
-
-     int main(int argc, char*  argv[]) {
-       char n = 96;
-
-       while(n++<TEN) {
-         printf("%5c",n);
-         printf("\n");
-       }
-
-       return 0;
-     }
-   #+end_src
-
-10. 下面分别打印什么。\\
-    #+begin_src C
-      //1   2
-      /*
-        101
-        102
-        103
-        104
-      ,*/
-      //stuvw
-    #+end_src
-
-11. 下面的程序将打印出什么内容？\\
-    #+begin_src C
-      //1   2
-      /*
-        101
-        102
-        103
-        104
-      ,*/
-      //stuvw
-    #+end_src
-
-12. 编写一条语句。\\
-    #+begin_src C
-      a.x=x+10;
-      b.x++;
-      c.c=(a+b)*2;
-      d.c=a+b*2;
-    #+end_src
-
-13. 编写一条语句。\\
-    #+begin_src C
-      a.x--;
-      b.m=n%k;
-      c.p=q/b-a;
-      d.x=(a+b)/c*d;
-    #+end_src
+8. 遇到什么潜在的问题？\\
+   使用scanf()函数处理数值。

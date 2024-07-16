@@ -6,17 +6,16 @@
      #include <stdio.h>
 
      int main() {
-       const int tmp = 60;
-       int min = 0;
-       int huor = 0;
-
-       while(scanf("%d",&min)>0) {
-         huor = min / tmp;
-         min = min % tmp;
-         printf("%d小时%d分钟\n",huor,min);
+       int ch, count = 0;
+    
+       while((ch=getchar())!=EOF) {
+         putchar(ch);
+         count++;
        }
 
-       return 0;
+       printf("%d\n",count);
+  
+       return 0;        
      }
    #+end_src
 
@@ -25,14 +24,26 @@
      #include <stdio.h>
 
      int main() {
-       int num;
-       int i = 10;
-       scanf("%d",&num);
+       int count = 0;
+       char ch;
 
-       while(i--)
-         printf("%d ",num++);
+       while((ch=getchar())!=EOF){
+         if(count++==10){
+           printf("\n");
+           count = 1;
+         }
 
-       printf("%d\n",num);
+         if(ch>='\040')
+           printf("\'%c\'--%3d ",ch,ch);
+         else if(ch=='\n'){
+           printf("\\n--\\n\n ");
+           count = 0;
+         }
+         else if(ch=='\t')
+           printf("\\t--\\t ");
+         else
+           printf("\'%c\'--^%c ",ch,(ch+64));
+       }
 
        return 0;
      }
@@ -43,12 +54,19 @@
      #include <stdio.h>
 
      int main() {
-       int day = 0;
+       int ch, big = 0;
+       int small = 0;
 
-       while(scanf("%d",&day)>0)
-         printf("%d days are %d weeks, %d days\n",day,day/7,day%7);
+       while((ch=getchar())!=EOF) {
+         if(ch>='A' && ch<='Z')
+           big++;
+         if(ch>='a' && ch<='z')
+           small++;
+       }
 
-       return 0;
+       printf("%d %d\n",big,small);
+
+       return 0;        
      }
    #+end_src
 
@@ -57,20 +75,19 @@
      #include <stdio.h>
 
      int main() {
-       int feet;
-       float inch, high;
+       int ch, count = 0;
+       int space = 1;
 
-       printf("Enter a height in centimeters:");
-       while(scanf("%f",&high)>0) {
-         feet = high / 30.48;
-         inch = (high - feet * 30.48) / 2.54;
-         printf("\n%.1f cm = %d feet, %.1f inches\n",high,feet,inch);
-         printf("Enter a height in centimeters:");
+       while((ch=getchar())!=EOF) {
+         if((ch>='a' && ch<='z') || (ch>='A' && ch<='Z'))
+           count++;
+         if(ch==' ')
+           space++;
        }
 
-       printf("%d\n",num);
+       printf("%d\n",count/space);
 
-       return 0;
+       return 0;        
      }
    #+end_src
 
@@ -79,15 +96,30 @@
      #include <stdio.h>
 
      int main() {
-       int count = 0, sum = 0;
-       printf("Enter the number of days you work:");
-       scanf("%d",&count);
+       int head = 1;
+       int tail = 100;
+       int guess = (head + tail) / 2;
+       char ch;
 
-       while(count>0)
-         sum = sum + count--;
+       do{
+         if(getchar()=='y')
+           break;
+         while((ch=getchar())!='\n')
+           continue;
 
-       printf("You earned $ %d total!\n",sum);
-       printf("PROGRAM EXIT!\n");
+         if(ch=='l' || ch=='L') {
+           tail = guess - 1;
+           guess = (head + tail) / 2;
+           continue;
+         }
+         else if(ch=='s' || ch=='S') {
+           head = guess + 1;
+           guess = (head + tail) / 2;
+           continue;
+         }
+         else
+           continue;
+       }while(getchar()!='y');
 
        return 0;
      }
@@ -97,18 +129,21 @@
    #+begin_src C
      #include <stdio.h>
 
+     char get_first() {
+       char ch;
+
+       do {
+         ch = getchar();
+       }while(ch==' ' || ch=='\n' || ch=='\t');
+
+       return ch;
+     }
+
      int main() {
-       int count = 0, sum = 0;
-       printf("Enter the number of days you work:");
-       scanf("%d",&count);
+       char ch;
 
-       while(count>0) {
-         sum = sum + count * count;
-         count--;
-       }
-
-       printf("You earned $ %d total!\n",sum);
-       printf("PROGRAM EXIT!\n");
+       ch = get_first();
+       printf("%c\n",ch);
 
        return 0;
      }
@@ -118,13 +153,68 @@
    #+begin_src C
      #include <stdio.h>
 
-     double cubic(double num) { return num * num * num; }
+     #define EXTRA_HOUR 1.5
+     #define BASE_TAX 0.15
+     #define EXTRA_TAX 0.2
+     #define LAST_TAX 0.25
+
+     int menu() {
+       int num;
+
+       printf("*****************************************************************\n");
+       printf("Enter the number corresponding to the desired pay rate or action:\n");
+       printf("a, $8.75/hr                                     b. $9.33/hr\n");
+       printf("c. $10.00/hr                                    d. $11.20/hr\n");
+       printf("q. quit\n");
+       printf("*****************************************************************\n");
+       num = getchar();
+        
+       return num; 
+     }
 
      int main() {
-       double num;
+       double hour, total, tax, wage;
+       int ch;
 
-       scanf("%lf",&num);
-       printf("%lf\n",cubic(num));
+       while((ch=menu())!='q') {
+         printf("hour:");
+         scanf("%lf",&hour);
+         
+         switch(ch) {
+           case 'a':
+             wage = 8.75;
+             break;
+
+           case 'b':
+             wage = 9.33;
+             break;
+
+           case 'c':
+             wage = 10.00;
+             break;
+
+           case 'd':
+             wage = 11.20;
+             break;
+
+           default:
+             break;
+         }
+         
+         if(hour<=40)
+           total = hour * wage;
+         else
+           total = ((hour - 40) * EXTRA_HOUR + 40) * wage;
+
+         if(total<300)
+           tax = total * BASE_TAX;
+         else if(total>300 && total<=450)
+           tax = (total - 300) * EXTRA_TAX + 300 * BASE_TAX;
+         else
+           tax = 300 * BASE_TAX + 150 * EXTRA_TAX + (total - 450) * LAST_TAX;
+
+         printf("%lf %lf %lf\n\n",total,tax,total-tax);
+       }
 
        return 0;
      }
@@ -133,56 +223,89 @@
 8. 编写程序。\\
    #+begin_src C
      #include <stdio.h>
+     #include <stdlib.h>
 
-     int main() {
-       int first, second;
-       printf("This program computes moduli\n");
-       printf("Enter an integer to server as the second sperand:");
-       scanf("%d",&second);
+     void emun() {
+       printf("Enter the operation of your choice:\n");
+       printf("a. add          s. subtract\n");
+       printf("m. multiply     d. divide\n");
+       printf("q. quit\n");
+     }
 
-       printf("Now enter the first operand:");
-       scanf("%d",&first);
-
-       printf("%d %% %d is %d\n",first,second,first%second);
-
-       printf("Now enter the first operand (<= 0 to quit):");
+     void num(float *first, float *scend) {
+       int ch;
+       
+       printf("Enter first number:");
        while(1) {
-         scanf("%d",&first);
-         if(first<=0)
-           break;
-         printf("%d %% %d is %d\n",first,second,first%second);
-         printf("Now enter the first operand (<= 0 to quit):");
+         while(scanf("%f",first)!=1) {
+           while((ch=getchar())!='\n')
+             putchar(ch);
+           printf(" is not an number.\n");
+           printf("Please enter: a number, such as 2.5, -1.78E8, or 3:");
+         }
+         
+         break;
        }
 
-       printf("Done\n");
-
-       return 0;
-     }
-   #+end_src
-
-9. 编写程序。\\
-   #+begin_src C
-     #include <stdio.h>
-
-     void Temperatures(double huashi) {
-       const double tmp = 273.16;
-       double sheshi, kaishi;
-       sheshi = 5.0 / 9.0 * (huashi - 32.0);
-       kaishi = sheshi + tmp;
-
-       printf("华氏度：%.2f 摄氏度：%.2f 开始度：%.2f\n",huashi,sheshi,kaishi);
+       printf("Enter scend number:");
+       while(1) {
+         while(scanf("%f",scend)!=1) {
+           while((ch=getchar())!='\n')
+             putchar(ch);
+           printf(" is not an number.\n");
+           printf("Please enter: a number, such as 2.5, -1.78E8, or 3:");
+         }
+         
+         break;
+       }
      }
 
      int main() {
-       double huashi;
+       float first, scend;
+       int ch, flag = 1;
+       
+       while(flag) {
+         emun();
+         switch(getchar()) {
+           case 97:
+             num(&first,&scend);
+             printf("%f + %f = %f\n",first,scend,first+scend);
+             break;
+           case 115:
+             num(&first,&scend);
+             printf("%f - %f = %f\n",first,scend,first-scend);
+             break;
+           case 109:
+             num(&first,&scend);
+             printf("%f * %f = %f\n",first,scend,first*scend);
+             break;
+           case 100:
+             num(&first,&scend);
+             while(scend==0) {
+               printf("Enter a number other than 0:");
+               while(1) {
+                 while(scanf("%f",&scend)!=1) {
+                   while((ch=getchar())!='\n')
+                     putchar(ch);
+                   printf(" is not an number.\n");
+                   printf("Please enter: a number, such as 2.5, -1.78E8, or 3:");
+                 }
+         
+                 break;
+               }
+             }
+             printf("%f / %f = %f\n",first,scend,first/scend);
+             break;
+           default:
+             flag = 0;
+             break;
+         }
 
-       while(1) {
-         int tmp = scanf("%lf",&huashi);
-         if(tmp!=1)
-           break;
-         Temperatures(huashi);
+         while(getchar()!='\n');
        }
 
-       return 0;
+       printf("Bye\n");
+
+       return 0;        
      }
    #+end_src
