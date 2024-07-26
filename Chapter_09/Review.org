@@ -1,0 +1,89 @@
+* 复习题
+
+
+1. 实际参数和形式参数的区别是什么。\\
+   形参是局部变量，实参是主函数调用中赋给形参。
+
+2. 写出函数头。\\
+   #+begin_src C
+     void dont(int x)
+     int gear(int x, int y)
+     int guess()
+     void stuff_it(double x, double *y)
+   #+end_src
+
+3. 写出函数体。\\
+   #+begin_src C
+     char n_to_char(int x)
+     int digit(double x, int y)
+     double* which(double *x, double *y)
+     int random()
+   #+end_src
+   
+4. 设计函数。\\
+   #+begin_src C
+     int add(int x, int y) {return x + y;}
+   #+end_src
+
+5. 修改练习题4。\\
+   #+begin_src C
+     int add(double x, double y) {return x + y;}
+   #+end_src
+
+6. 设计函数。\\
+   #+begin_src C
+     void alter(int *x, int *y) {
+       int a = *x;
+       int b = *y;
+
+       *x = a + b;
+       *y = a - b;
+     }
+   #+end_src
+
+7. 下面函数定义是否正确。\\
+   函数定义错误，num未初始化。
+
+8. 编写函数。\\
+   #+begin_src C
+     int max(int x, int y, int z) {
+       if(x>y && x>z)
+         return x;
+       else if(y>x && y>z)
+         return y;
+       else
+         return z;
+     }
+   #+end_src
+
+9. 给定下面输出。\\
+   #+begin_src C
+     #include <stdio.h>
+
+     void meun() {
+       int num;
+       printf("Please choose one of the following:\n");
+       printf("1) copy files           2) move files\n");
+       printf("3) remove files         4) quit\n");
+       printf("Enter the number of your choice:");
+     }
+
+     int fun(int x, int y) {
+       int num;
+
+       meun();
+       while(scanf("%d",&num)==1) {
+         if(num>=x && num<=y)
+           return num;
+         meun();
+       }
+
+       return 4;
+     }
+
+     int main() {
+       int num = fun(1, 4);
+
+       return 0;
+     }
+   #+end_src
