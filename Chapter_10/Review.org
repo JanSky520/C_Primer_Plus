@@ -1,0 +1,82 @@
+* 复习题
+
+
+1. 下面打印的是什么。\\
+   #+begin_src shell
+     8 8
+     4 4
+     0 0
+     2 2
+   #+end_src
+
+2. 复习题1有多少个元素。\\
+   4个
+
+3. 复习题1中，ref地址是什么，ref+1，++ref是什么。\\
+   ref指向数组首元素的地址，ref+1指向ref的下一个元素地址，++ref会修改ref的值(实际测试好像并未修改)。
+   
+4. 下面代码的值分别是什么。\\
+   a.12 16 b.12 14
+
+5. 下面代码的值分别是什么。\\
+   a.12 16 b.12 14
+
+6. 表示下面地址。\\
+   #+begin_src C
+     &grid[30][100];
+     &grid[22][0], &grid[22];
+     &grid[0][0], &grid[0], grid;
+   #+end_src
+
+7. 正确声明以下各变量。\\
+   #+begin_src C
+     int digits[10];
+     float rates[6];
+     int mat[5][3];
+     char* psa[20];
+     char (*pstr)[20];
+   #+end_src
+
+8. 正确声明以下各变量。\\
+   #+begin_src C
+     int arr[6] = {1,2,4,6,16,32};
+     arr[2];
+     int arr[100] = {[100]=-1};
+     int arr[100] = {[5]=101,[10]=101,101,101,101};
+   #+end_src
+
+9. 内含10个元素的数组下标范围是什么。\\
+   0～9
+
+10. 判断以下各项是否有效。
+    a.有效 b.无效 c.无效 d.无效 e.有效 f.无效 g.无效 h.有效
+
+11. 声明一个800x600的int类型的数组。\\
+    #+begin_src C
+     int arr[800][600];
+    #+end_src
+
+12. 写出函数调用。\\
+    #+begin_src C
+      void fun1(double arr[], int n)
+      void fun2(int n, double arr[n])
+      fun1(trots, 20);
+      fun2(20, trots);
+
+      void fun1(short arr[][30], int i)
+      void fun2(int i, int j, short arr[i][j])
+      fun1(clops, 10);
+      fun2(10, 30, clops);
+
+      void fun1(long arr[][10][15], int i)
+      void fun2(int i, int j, int k long arr[i][j][k])
+      fun1(shots, 5);
+      fun2(5, 10, 15, shots);
+    #+end_src
+
+13. 写出函数调用。\\
+    #+begin_src C
+      show((int [4]){8,3,9,2}, 4);
+
+      show2((int [][3]){{8,3,9}{5,4,1}}, 2);
+    #+end_src
